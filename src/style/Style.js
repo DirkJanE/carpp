@@ -48,7 +48,7 @@ export const LoginSignupContainer = styled.div`
     width: 25vw;
     border-radius: 10px;
     background-color: #F58040;
-    background-image: linear-gradient(to right, rgba(245, 128, 64, 1) 98%, rgba(110, 59, 30, 1));
+    box-shadow: 5px 5px #4B2714;
     @media (max-width: 500px) {
         width: 90vw;
         height: 50vh;
@@ -73,7 +73,9 @@ export const LoginSignupFieldsContainer = styled.div`
     justify-content: center;
     align-items: center;
     height: 30vh;
-    width: 90vw;
+    width: 21vw;
+    border-radius: 10px;
+    background-color: #cb6939;
 `;
 
 
@@ -107,8 +109,6 @@ export const StyledText = styled.h4`
 `;
 
 export const StyledCar = styled.div`
-    height: 5vh;
-    width: 10vw;
     background-repeat: no-repeat;
     @media (max-width: 500px) {
         background-size: 200px 100px;
@@ -121,7 +121,7 @@ export const StyledLabel = styled.label`
 
 export const StyledInput = styled.input`
     height: 2vh;
-    width: 20vw;
+    width: 19vw;
     border-radius: 5px;
     @media (max-width: 500px) {
         height: 2vh;
@@ -131,7 +131,7 @@ export const StyledInput = styled.input`
 
 export const StyledButton = styled.button`
     height: 2.5vh;
-    width: 20.4vw;
+    width: 19.4vw;
     margin-top: 2vh;
     border-radius: 5px;
     &:hover {
@@ -143,6 +143,25 @@ export const StyledButton = styled.button`
         height: 3vh;
         width: 82vw;
     }
+`;
+
+export const StyledSelector = styled.select`
+    width: 5vw;
+    border-radius: 5px;
+`;
+
+export const StyledOption = styled.option`
+
+`;
+
+export const StyledForm = styled.form`
+    display: flex;
+    flexDirection: row;
+    height: 5vh;
+    width: 76vw;
+    margin-top: 2vh;
+    background-color: #cb6939;
+    border-radius: 10px;
 `;
 
 export const StyledNavbar = styled.div`
@@ -167,8 +186,4 @@ export const StyledNavbarLinks = styled.a`
     &:hover {
         cursor: pointer;
     }
-`;
-
-export const StyledBottomShadow = styled.div`
-    background-image: linear-gradient(to bottom, rgba(245, 128, 64, 1) 80%, rgba(110, 59, 30, 1));
 `;

@@ -1,8 +1,7 @@
 import {
     StyledMainPage,
     RowContainer,
-    StyledText,
-    MidSectionContainer, LoginSignupContainer, LoginSignupButtonsContainer, StyledBottomShadow
+    MidSectionContainer, LoginSignupContainer, LoginSignupButtonsContainer
 } from "../style/Style";
 import {Title} from "../components/title/Title";
 import {useState} from "react";
@@ -31,7 +30,7 @@ export const LoginSignup = () => {
             </Title>
         </RowContainer>
         <MidSectionContainer>
-            <Car image={car}>
+            <Car image={car} size={"400px"} height={"17vh"} width={"22vw"}>
             </Car>
                 <LoginSignupContainer>
                     <LoginSignupButtonsContainer>
@@ -40,7 +39,7 @@ export const LoginSignup = () => {
                     </LoginSignupButtonsContainer>
                     {loginFieldActive ? <Login/> : <Signup/>}
                 </LoginSignupContainer>
-            <Car image={carreverse}>
+            <Car image={carreverse} size={"400px"} height={"17vh"} width={"22vw"}>
             </Car>
         </MidSectionContainer>
     </StyledMainPage>

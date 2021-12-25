@@ -1,7 +1,7 @@
 import {RowContainer, StyledNavbar, StyledNavbarLinks} from "../../style/Style";
 import {Title} from "../title/Title";
 import {Car} from "../car/Car";
-import car from '../../background/car.png';
+import carblack from '../../background/carblack.png';
 
 export const Navbar = () => {
 
@@ -12,7 +12,7 @@ export const Navbar = () => {
             <Title fontsize={"1.5vw"} height={"5vh"} color={"black"}></Title>
           </RowContainer>
           <RowContainer style={{width: "60vw"}}>
-            <Car image={car} color={"black"}>
+            <Car image={carblack} size={"95px"} height={"5vh"} width={"5vw"}>
             </Car>
           </RowContainer>
           <RowContainer style={{width: "28vw", justifyContent: "flex-end"}}>

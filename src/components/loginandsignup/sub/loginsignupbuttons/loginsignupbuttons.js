@@ -2,8 +2,8 @@ import {RowContainer, StyledText} from "../../../../style/Style";
 import {useState} from "react";
 
 export const Loginsignupbuttons = (props) => {
-    const [activeButtonColor] = useState("#F58040FF");
-    const [notActiveButtonColor] = useState("gray");
+    const [activeButtonColor] = useState("#cb6939");
+    const [notActiveButtonColor] = useState("#F58040");
 
     return (
     <RowContainer>
