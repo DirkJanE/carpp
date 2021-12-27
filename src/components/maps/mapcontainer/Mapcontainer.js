@@ -1,48 +1,44 @@
-import React from 'react'
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import React from 'react';
+import BingMapsReact from "bingmaps-react";
+import {RowContainer} from "../../../style/Style";
 
-const Mapcontainer = () => {
-    const containerStyle = {
-        height: "68.5vh",
-        width: "76vw",
-        marginTop: "2vh",
-        borderRadius: 10
-    };
+export const Mapcontainer = () => {
 
-    const center = {
-        lat: 52.2292,
-        lng: 5.1669
-    };
+    const pushPin = {
+        center: {
+            latitude: 52.2291,
+            longitude: 5.1668,
+        },
+        options: {
+            title: "Hilversum",
+            subTitle: "testtesttest"
+        },
+    }
 
-    const { isLoaded } = useJsApiLoader({
-        id: 'carpp-336114',
-        googleMapsApiKey: ""
-    })
+    const pushPin1 = {
+        center: {
+            latitude: 52.2292,
+            longitude: 5.1650,
+        },
+        options: {
+            title: "Hilversum1",
+            subTitle: "testtestest"
+        },
+    }
 
-    const [map, setMap] = React.useState(null)
 
-    const onLoad = React.useCallback(function callback(map) {
-        const bounds = new window.google.maps.LatLngBounds();
-        map.fitBounds(bounds);
-        setMap(map)
-    }, [])
+    const pushPins = [pushPin, pushPin1];
 
-    const onUnmount = React.useCallback(function callback(map) {
-        setMap(null)
-    }, [])
-
-    return isLoaded ? (
-        <GoogleMap
-            mapContainerStyle={containerStyle}
-            center={center}
-            zoom={13}
-            onLoad={onLoad}
-            onUnmount={onUnmount}
-        >
-            { /* Child components, such as markers, info windows, etc. */ }
-            <></>
-        </GoogleMap>
-    ) : <></>
+    return (
+        <RowContainer style={{height:"67vh", width:"76vw", backgroundColor: "#cb6939", borderRadius: "10px", marginTop: "2.5vh"}}>
+            <BingMapsReact height="63vh"
+                           width="74vw"
+                           bingMapsKey=""
+                           viewOptions={{
+                               center: {latitude: 52.2289, longitude: 5.1655},
+                               zoom: 13
+                           }}
+                           pushPinsWithInfoboxes={pushPins} />
+        </RowContainer>
+        )
 }
-
-export default React.memo(Mapcontainer)
