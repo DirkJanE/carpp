@@ -2,7 +2,7 @@ import React from 'react';
 import {  BrowserRouter, Routes, Route } from 'react-router-dom';
 import {
     LoginSignup,
-    Maps
+    Main
 
 } from './pages';
 import './App.css';
@@ -14,7 +14,7 @@ function App() {
               <Route path="/" element={<LoginSignup/>}/>
           </Routes>
           <Routes>
-              <Route path="/maps" element={<Maps/>}/>
+              <Route path="/main" element={<Main/>}/>
           </Routes>
       </BrowserRouter>
   );

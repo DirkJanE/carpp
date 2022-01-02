@@ -7,7 +7,7 @@ export const Dropdownbar = () => {
     const brands = [{option: "Volkswagen"}, {option: "Opel"}, {option: "Renault"}, {option: "Peugeot"}, {option: "Mercedes"}]
 
     return (
-          <StyledForm>
+          <StyledForm style={{height: "5vh", width: "76vw", marginTop: "3vh"}}>
               <Selectors label="Zoek op afstand:" options={distances}>
               </Selectors>
               <Selectors label="Zoek op huurprijs:" options={prizes}>

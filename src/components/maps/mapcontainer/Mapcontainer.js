@@ -30,7 +30,7 @@ export const Mapcontainer = () => {
     const pushPins = [pushPin, pushPin1];
 
     return (
-        <RowContainer style={{height:"67vh", width:"76vw", backgroundColor: "#cb6939", borderRadius: "10px", marginTop: "2.5vh"}}>
+        <RowContainer style={{height:"67vh", width:"76vw", backgroundColor: "#cb6939", borderRadius: "10px", marginTop: "2vh"}}>
             <BingMapsReact height="63vh"
                            width="74vw"
                            bingMapsKey=""

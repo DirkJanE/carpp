@@ -80,18 +80,6 @@ export const LoginSignupButtonsContainer = styled.div`
         }
 `;
 
-export const LoginSignupFieldsContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 30vh;
-    width: 21vw;
-    border-radius: 10px;
-    background-color: #cb6939;
-`;
-
-
 export const StyledTitle = styled.div`
     color: #F58040;
     font-size: 10vw;
@@ -170,9 +158,6 @@ export const StyledOption = styled.option`
 export const StyledForm = styled.form`
     display: flex;
     flexDirection: row;
-    height: 5vh;
-    width: 76vw;
-    margin-top: 2vh;
     background-color: #cb6939;
     border-radius: 10px;
 `;
@@ -188,7 +173,8 @@ export const StyledNavbar = styled.div`
 
 export const StyledNavbarLinks = styled.a`
     display: flex;
-    justify-content: right;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     color: black;
     width: 8vw;
@@ -200,3 +186,19 @@ export const StyledNavbarLinks = styled.a`
         cursor: pointer;
     }
 `;
+
+export const StyledMessage = styled.h4`
+    display: flex;
+    flex-direction: column;
+`;
+
+export const StyledSVG = styled.svg`
+
+`;
+
+export const StyledLine = styled.line`
+    width: 2vw;
+    stroke-width: 1;
+    stroke: #2b2a2a;
+`;
+
