@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { StyledNavbarLinks } from "../../../style/Style";   
 import { Line } from "../line/Line";
+import {StyledNavbarLinks} from "../style/navbarstyle";
 
 export const Link = (props) => {
     const [x1, setX1] = useState();

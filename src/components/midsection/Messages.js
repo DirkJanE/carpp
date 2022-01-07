@@ -1,4 +1,5 @@
-import { GeneralContainer, RowContainer, ColumnContainer, StyledMessage } from "../../style/Style";
+import {GeneralContainer} from "./style/Midsectionstyle";
+import { RowContainer, ColumnContainer, StyledMessage } from "../../style/Style";
 
 export const Messages = () => {
     const Messages = [

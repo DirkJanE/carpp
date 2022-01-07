@@ -1,10 +1,18 @@
-import {StyledTitle} from "../../style/Style";
+import {StyledTitle, StyledTitleNavbar} from "./style/titlestyle";
 
 export const Title = (props) => {
 
-    return (
-        <StyledTitle style={{color: props.color, fontSize: props.fontsize, textShadow: props.textshadow, height: props.height}}>
-            C a R p p
-        </StyledTitle>
-    )
+    if (props.component === "LoginSignup") {
+        return (
+            <StyledTitle>
+                C a R p p
+            </StyledTitle>
+        )
+    } else {
+        return (
+            <StyledTitleNavbar>
+                C a R p p
+            </StyledTitleNavbar>
+        )
+    }
 }

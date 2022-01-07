@@ -1,45 +1,38 @@
-import { RowContainer, StyledForm, StyledInput, StyledLabel } from "../../../../style/Style";
+import {ColumnContainer, RowContainer} from "../../../../style/Style";
+import {StyledInputForRadioButton, StyledLabelForRadioButton} from "../../style/loginandsignupstyle";
 import { useState } from "react";
 
-export const Radiobuttons = () => {
-    const [select, setSelect] = useState("optionA");
+export const Radiobuttons = (props) => {
+    const [select, setSelect] = useState();
 
-    const handleSelectChange = event => {
+    const handleChange = event => {
       const value = event.target.value;
       setSelect(value);
-      //console.log(value)
+      props.setvalue(value);
     };
 
     return (
-        <StyledForm style={{flexDirection: "column", width: "19vw", alignItems: "flex-start", marginTop: "1vh"}}>
-            <RowContainer>
-                <StyledLabel for="rent" >
+        <RowContainer style={{width: "inherit", marginLeft: "2vw", justifyContent: "flex-start", marginTop: "1vh"}}>
+            <ColumnContainer style={{alignItems: "flex-start"}}>
+                <StyledLabelForRadioButton>
                     Ik wil een auto huren.
-                </StyledLabel>
-                <StyledInput    type="radio" 
-                                name="rentorlet"   
-                                id="rent"
-                                value="optionA"
-                                checked={select === "optionA"}
-                                onChange={event => handleSelectChange(event)}
-                                style={{width: "1vw", marginLeft: "2.1vw"}}
-                                >
-                </StyledInput>
-            </RowContainer>
-            <RowContainer>
-                <StyledLabel for="let">
+                </StyledLabelForRadioButton>
+                <StyledLabelForRadioButton>
                     Ik wil een auto verhuren.
-                </StyledLabel>
-                <StyledInput    type="radio" 
-                                name="rentorlet"
-                                id="let" 
-                                value="optionB"
-                                checked={select === "optionB"}
-                                onChange={event => handleSelectChange(event)}
-                                style={{width: "1vw", marginLeft: "1vw"}}>
-                </StyledInput>
-            </RowContainer>
-        </StyledForm>
-
+                </StyledLabelForRadioButton>
+            </ColumnContainer>
+            <ColumnContainer>
+                <StyledInputForRadioButton    type="radio"
+                                              value="optionA"
+                                              checked={select === "optionA"}
+                                              onChange={event => handleChange(event)}>
+                </StyledInputForRadioButton>
+                <StyledInputForRadioButton  type="radio"
+                                            value="optionB"
+                                            checked={select === "optionB"}
+                                            onChange={event => handleChange(event)}>
+                </StyledInputForRadioButton>
+            </ColumnContainer>
+        </RowContainer>
     );
 }

@@ -1,9 +1,14 @@
-import {StyledCar} from "../../style/Style";
+import {StyledCar, StyledSmallCar} from "./style/Carstyle.js";
 
 export const Car = (props) => {
 
-    return (
-        <StyledCar style={{backgroundImage: `url(${props.image})`, height: props.height, width: props.width, backgroundSize: props.size, justifyContent: "center"}}>
-        </StyledCar>
-    );
+    if (props.component === "LoginSignupPage") {
+        return (
+            <StyledCar style={{backgroundImage: `url(${props.image})`, justifyContent: "center"}}/>
+        );
+    } else {
+        return (
+            <StyledSmallCar style={{backgroundImage: `url(${props.image})`, justifyContent: "center"}}/>
+        );
+    }
 }

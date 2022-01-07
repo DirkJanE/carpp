@@ -1,5 +1,5 @@
+import {GeneralContainer} from "./style/Midsectionstyle";
 import { useState } from "react/cjs/react.development";
-import { GeneralContainer, StyledText} from "../../style/Style";
 import { Rent } from "../profile/Rent";
 import { Rentout } from "../profile/Rentout";
 

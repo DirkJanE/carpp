@@ -1,4 +1,5 @@
-import { StyledLine, StyledSVG } from "../../../style/Style";
+import {StyledLine, StyledSVG} from "../style/navbarstyle";
+
 
 export const Line = (props) => {
 

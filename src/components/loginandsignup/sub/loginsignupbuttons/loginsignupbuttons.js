@@ -7,11 +7,9 @@ export const Loginsignupbuttons = (props) => {
 
     return (
     <RowContainer>
-        <RowContainer>
-            <StyledText style={{backgroundColor: props.loginFieldActive ? activeButtonColor : notActiveButtonColor}} onClick={props.handleClickLoginButton}>
-                Login
-            </StyledText>
-        </RowContainer>
+        <StyledText style={{backgroundColor: props.loginFieldActive ? activeButtonColor : notActiveButtonColor}} onClick={props.handleClickLoginButton}>
+            Login
+        </StyledText>
         <StyledText style={{backgroundColor: props.loginFieldActive ? notActiveButtonColor : activeButtonColor}} onClick={props.handleClickSignupButton}>
             Sign Up
         </StyledText>

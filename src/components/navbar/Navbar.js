@@ -1,9 +1,10 @@
-import {RowContainer, StyledNavbar} from "../../style/Style";
+import {RowContainer, StyledSmallCar} from "../../style/Style";
+import {StyledNavbar} from "./style/navbarstyle";
 import {Title} from "../title/Title";
-import {Car} from "../car/Car";
-import carblack from '../../background/carblack.png';
 import { useState, useEffect } from "react";
 import { Link } from "./link/Link";
+import {Car} from "../car/Car";
+import carblack from '../../background/carblack.png';
 
 export const Navbar = (props) => {
   const names = ["Maps", "Berichten", "Profiel"]
@@ -35,10 +36,10 @@ export const Navbar = (props) => {
       <StyledNavbar>
           <RowContainer style={{width: "2vw"}}></RowContainer>
           <RowContainer style={{width: "28vw", justifyContent: "flex-start"}}>
-            <Title fontsize={"1.5vw"} height={"5vh"} color={"black"}></Title>
+            <Title component={"Navbar"}></Title>
           </RowContainer>
           <RowContainer style={{width: "60vw"}}>
-            <Car image={carblack} size={"95px"} height={"5vh"} width={"5vw"}>
+            <Car component={"Navbar"} image={carblack}>
             </Car>
           </RowContainer>
           <RowContainer style={{width: "28vw", justifyContent: "flex-end"}}>

@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import BingMapsReact from "bingmaps-react";
-import {RowContainer} from "../../../style/Style";
+import {BingMapsContainer} from "./style/Bingmapsstyle";
 
-export const Mapcontainer = () => {
+export const Bingmaps = () => {
+    const [height, setHeight] = useState();
+    const [width, setWidth] = useState();
 
     const pushPin = {
         center: {
@@ -26,19 +28,28 @@ export const Mapcontainer = () => {
         },
     }
 
+    useEffect(() => {
+        if (window.innerWidth <= 500) {
+            setHeight("55vh");
+            setWidth("69vw");
+        } else {
+            setHeight("63vh");
+            setWidth("74vw");
+        }
+    }, []);
 
     const pushPins = [pushPin, pushPin1];
 
     return (
-        <RowContainer style={{height:"67vh", width:"76vw", backgroundColor: "#cb6939", borderRadius: "10px", marginTop: "2vh"}}>
-            <BingMapsReact height="63vh"
-                           width="74vw"
+        <BingMapsContainer>
+            <BingMapsReact height={height}
+                           width={width}
                            bingMapsKey=""
                            viewOptions={{
                                center: {latitude: 52.2289, longitude: 5.1655},
                                zoom: 13
                            }}
                            pushPinsWithInfoboxes={pushPins} />
-        </RowContainer>
+        </BingMapsContainer>
         )
 }

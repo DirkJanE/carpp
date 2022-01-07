@@ -1,13 +1,14 @@
-import {GeneralContainer} from "../../style/Style";
-import {Dropdownbar} from "../maps/dropdownbar/Dropdownbar";
-import {Mapcontainer} from "../maps/mapcontainer/Mapcontainer";
+import {GeneralContainer} from "./style/Midsectionstyle";
+import {Dropdown} from "../dropdown/Dropdown";
+import {Bingmaps} from "../bingmaps/Bingmaps";
 
 export const Maps = () => {
-    return (
+    const selectorlabels = ["Zoek op afstand:", "Zoek op prijs:", "Zoek op merk:"]
 
+    return (
     <GeneralContainer>
-      <Dropdownbar/>
-      <Mapcontainer/>
+      <Dropdown labels={selectorlabels}/>
+      <Bingmaps/>
     </GeneralContainer>
     
     );
