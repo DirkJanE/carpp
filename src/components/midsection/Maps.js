@@ -1,5 +1,5 @@
 import {GeneralContainer} from "./style/Midsectionstyle";
-import {Dropdown} from "../dropdown/Dropdown";
+import {Onedropdown} from "../dropdown/onedropdown/Onedropdown";
 import {Bingmaps} from "../bingmaps/Bingmaps";
 
 export const Maps = () => {
@@ -7,7 +7,7 @@ export const Maps = () => {
 
     return (
     <GeneralContainer>
-      <Dropdown labels={selectorlabels}/>
+      <Onedropdown labels={selectorlabels}/>
       <Bingmaps/>
     </GeneralContainer>
     
