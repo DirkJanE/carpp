@@ -15,10 +15,11 @@ export const Geodatarequest = (url, setCoordinates, setLocation, setError) => {
 
 export const RDWrequest = (url, setBrandType, setError) => {
     axios.get(url,
-        { data: { "$$app_token": ""}})
+        { headers: { 'X-App-Token': "36hfarzhr3k1ikby829a1oto1w008pxfta5ys489tqbnmsaftr"}})
         .then(response => {
             if (response.status === 200) {
                 setBrandType(response.data[0].merk + " " + response.data[0].handelsbenaming);
+                console.log(response);
             }
         })
         .catch(error => {

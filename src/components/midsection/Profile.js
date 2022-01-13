@@ -4,7 +4,7 @@ import { Rent } from "../profile/Rent";
 import { Rentout } from "../profile/Rentout";
 
 export const Profile = () => {
-    const [active, setActive] = useState("rent");
+    const [active, setActive] = useState("rentout");
 
     return (
         <GeneralContainer>

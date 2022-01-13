@@ -1,9 +1,11 @@
 import {ColumnContainer, RowContainer, StyledButton, StyledText} from "../../style/Style";
-import {Onedropdown} from "../dropdown/onedropdown/Onedropdown";
 import {Labelandinput} from "../loginandsignup/sub/labelandinput/Labelandinput";
 import {useEffect, useState} from "react";
 import {Geodatarequest} from "../apirequest/Apirequest";
 import {BingMapsContainer} from "../bingmaps/style/Bingmapsstyle";
+import {Dropdowncontainer} from "./profiledropdown/Dropdowncontainer";
+import {ProfileRowContainer, StyledDropdownButton} from "./style/Dropdownstyle";
+import {Profilelabelandinput} from "./profilelabelandinput/Profilelabelandinput";
 
 export const Rent = () => {
     const [postalcode, setPostalCode] = useState("");
@@ -11,7 +13,7 @@ export const Rent = () => {
     const [location, setLocation] = useState();
     const [coordinates, setCoordinates] = useState();
     const url = `https://geodata.nationaalgeoregister.nl/locatieserver/v3/free?q="${postalcode}" and type:postcode`;
-    const marginsleft = ["2vw", "2vw", "2vw"]
+    const labels = ["Jouw standaard afstand om op te zoeken:", "Jouw standaard prijs om op te zoeken:", "Jouw standaard merk om op te zoeken:"];
 
     useEffect(() => {
         if (postalcode.length === 6) {
@@ -28,18 +30,17 @@ export const Rent = () => {
             </StyledText>
             <BingMapsContainer style={{flexDirection: "column", alignItems: "center", justifyContent: "center", height: "70vh", marginTop: "0.5vh", backgroundColor: "#cb6939", borderRadius: 10}}>
                 <ColumnContainer style={{flexDirection: "column", alignItems: "flex-start", justifyContent: "flex-start", height: "66vh", width: "72vw"}}>
-                    <RowContainer>
-                        <Labelandinput label={"Jouw postcode:"} flexdirection={"row"} height={"1.5vh"} width={"3vw"} margintop={"1vh"} marginleft={"10vw"} setvalue={setPostalCode}></Labelandinput>
-                        <RowContainer style={{marginTop: "0.5vh", marginLeft: "2vw"}}>
+                    <ProfileRowContainer>
+                        <Profilelabelandinput label={"Jouw postcode:"} flexdirection={"row"} height={"1.5vh"} width={"3vw"} margintop={"1vh"} marginleft={"3vw"} setvalue={setPostalCode}></Profilelabelandinput>
+                        <RowContainer style={{height: "3vh", marginTop: "0.5vh", marginLeft: "2vw"}}>
                             {location}
                         </RowContainer>
-                    </RowContainer>
-                        <Onedropdown height={"66vh"} flexdirection={"column"} justifycontent={"flex-start"} alignitems={"flex-start"}>
-                        </Onedropdown>
+                    </ProfileRowContainer>
+                        <Dropdowncontainer></Dropdowncontainer>
                     <RowContainer style={{width: "72vw", height: "66vh", alignItems: "flex-end", justifyContent: "flex-end"}}>
-                        <StyledButton style={{height: "4vh", width: "4vw"}}>
+                        <StyledDropdownButton>
                             Opslaan
-                        </StyledButton>
+                        </StyledDropdownButton>
                     </RowContainer>
                 </ColumnContainer>
             </BingMapsContainer>

@@ -1,9 +1,10 @@
 import {ColumnContainer, RowContainer, StyledButton, StyledText} from "../../style/Style";
-import {GeneralContainer} from "../midsection/style/Midsectionstyle";
-import {Labelandinput} from "../loginandsignup/sub/labelandinput/Labelandinput";
+import {Profilelabelandinput} from "./profilelabelandinput/Profilelabelandinput";
 import {useEffect, useState} from "react";
 import {Geodatarequest, RDWrequest} from "../apirequest/Apirequest";
 import {BingMapsContainer} from "../bingmaps/style/Bingmapsstyle";
+import {ProfilePictureContainer, ProfileRowContainer, StyledDropdownButton} from "./style/Dropdownstyle";
+import {Uploadpicture} from "./uploadpicture/Uploadpicture";
 
 export const Rentout = () => {
     const [postalcode, setPostalCode] = useState("");
@@ -15,6 +16,8 @@ export const Rentout = () => {
     const [brandType, setBrandType]= useState("");
     const [error, setError] = useState();
 
+    const [number, setNumber] = useState(0);
+
     const urlgeodata = `https://geodata.nationaalgeoregister.nl/locatieserver/v3/free?q="${postalcode}" and type:postcode`;
     const urlRDW = `https://opendata.rdw.nl/resource/m9d7-ebf2.json?kenteken=${licensePlate}`;
 
@@ -25,10 +28,11 @@ export const Rentout = () => {
     }, [postalcode, urlgeodata, coordinates, location, error]);
 
     useEffect(() => {
-        if (licensePlate.length === 6) {
+        if (licensePlate.length === 6 && number === 0) {
             RDWrequest(urlRDW, setBrandType, setError);
+            setNumber(1);
         }
-    }, [urlRDW, licensePlate, error]);
+    }, [urlRDW, licensePlate, error, number]);
 
     console.log(brandType)
 
@@ -39,23 +43,24 @@ export const Rentout = () => {
             </StyledText>
             <BingMapsContainer style={{flexDirection: "column", alignItems: "center", justifyContent: "center", height: "70vh", marginTop: "0.5vh", backgroundColor: "#cb6939", borderRadius: 10}}>
                 <ColumnContainer style={{flexDirection: "column", alignItems: "flex-start", justifyContent: "flex-start", height: "66vh", width: "72vw"}}>
-                    <RowContainer>
-                        <Labelandinput label={"Jouw postcode:"} flexdirection={"row"} height={"1.5vh"} width={"3vw"} margintop={"1vh"} marginleft={"3vw"} setvalue={setPostalCode}></Labelandinput>
-                        <RowContainer style={{marginTop: "0.5vh", marginLeft: "2vw"}}>
+                    <ProfileRowContainer>
+                        <Profilelabelandinput label={"Jouw postcode:"} flexdirection={"row"} height={"1.5vh"} width={"3vw"} margintop={"1vh"} marginleft={"3vw"} setvalue={setPostalCode}></Profilelabelandinput>
+                        <RowContainer style={{height: "3vh", marginTop: "0.5vh", marginLeft: "2vw"}}>
                             {location}
                         </RowContainer>
-                    </RowContainer>
-                    <Labelandinput label={"Jouw verhuurprijs:"} flexdirection={"row"} height={"1.5vh"} width={"3vw"} margintop={"1vh"} marginleft={"2vw"} setvalue={setPrice}></Labelandinput>
-                    <RowContainer>
-                        <Labelandinput label={"Jouw kenteken:"} flexdirection={"row"} height={"1.5vh"} width={"3vw"} margintop={"1vh"} marginleft={"3vw"} setvalue={setLicensePlate}></Labelandinput>
-                        <RowContainer style={{marginTop: "0.5vh", marginLeft: "2vw"}}>
+                    </ProfileRowContainer>
+                            <Profilelabelandinput label={"Jouw verhuurprijs:"} flexdirection={"row"} height={"1.5vh"} width={"3vw"} margintop={"1vh"} marginleft={"2vw"} setvalue={setPrice}></Profilelabelandinput>
+                    <ProfileRowContainer>
+                        <Profilelabelandinput label={"Jouw kenteken:"} flexdirection={"row"} height={"1.5vh"} width={"3vw"} margintop={"1vh"} marginleft={"3vw"} setvalue={setLicensePlate}></Profilelabelandinput>
+                        <RowContainer style={{height: "3vh", marginTop: "0.5vh", marginLeft: "2vw"}}>
                             {brandType}
                         </RowContainer>
-                    </RowContainer>
-                    <RowContainer style={{width: "72vw", height: "66vh", alignItems: "flex-end", justifyContent: "flex-end"}}>
-                        <StyledButton style={{height: "4vh", width: "4vw"}}>
+                    </ProfileRowContainer>
+                        <Uploadpicture/>
+                    <RowContainer style={{width: "72vw", height: "10vh", alignItems: "flex-end", justifyContent: "flex-end"}}>
+                        <StyledDropdownButton>
                             Opslaan
-                        </StyledButton>
+                        </StyledDropdownButton>
                     </RowContainer>
                 </ColumnContainer>
             </BingMapsContainer>
