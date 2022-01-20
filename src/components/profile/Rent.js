@@ -1,5 +1,4 @@
-import {ColumnContainer, RowContainer, StyledButton, StyledText} from "../../style/Style";
-import {Labelandinput} from "../loginandsignup/sub/labelandinput/Labelandinput";
+import {ColumnContainer, RowContainer, StyledText} from "../../style/Style";
 import {useEffect, useState} from "react";
 import {Geodatarequest} from "../apirequest/Apirequest";
 import {BingMapsContainer} from "../bingmaps/style/Bingmapsstyle";
@@ -13,7 +12,6 @@ export const Rent = () => {
     const [location, setLocation] = useState();
     const [coordinates, setCoordinates] = useState();
     const url = `https://geodata.nationaalgeoregister.nl/locatieserver/v3/free?q="${postalcode}" and type:postcode`;
-    const labels = ["Jouw standaard afstand om op te zoeken:", "Jouw standaard prijs om op te zoeken:", "Jouw standaard merk om op te zoeken:"];
 
     useEffect(() => {
         if (postalcode.length === 6) {

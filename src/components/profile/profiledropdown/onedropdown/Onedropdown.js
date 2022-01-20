@@ -1,10 +1,4 @@
-import {
-    StyledDropdownForm,
-    StyledDropdownLabel,
-    StyledDropdownOption,
-    StyledDropdownSelector, StyledOnedropdownContainer, StyledProfileDropdownContainer, TestContainer
-} from "../../style/Dropdownstyle";
-import {RowContainer} from "../../../../style/Style";
+import {StyledDropdownLabel, StyledDropdownOption, StyledDropdownSelector, StyledProfileDropdownContainer} from "../../style/Dropdownstyle";
 import {useState} from "react";
 
 export const Onedropdown = (props) => {

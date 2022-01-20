@@ -1,9 +1,9 @@
-import {ColumnContainer, RowContainer, StyledButton, StyledText} from "../../style/Style";
+import {ColumnContainer, RowContainer, StyledText} from "../../style/Style";
 import {Profilelabelandinput} from "./profilelabelandinput/Profilelabelandinput";
 import {useEffect, useState} from "react";
 import {Geodatarequest, RDWrequest} from "../apirequest/Apirequest";
 import {BingMapsContainer} from "../bingmaps/style/Bingmapsstyle";
-import {ProfilePictureContainer, ProfileRowContainer, StyledDropdownButton} from "./style/Dropdownstyle";
+import {ProfileRowContainer, StyledDropdownButton} from "./style/Dropdownstyle";
 import {Uploadpicture} from "./uploadpicture/Uploadpicture";
 
 export const Rentout = () => {

@@ -1,4 +1,4 @@
-import {RowContainer, StyledSmallCar} from "../../style/Style";
+import {RowContainer} from "../../style/Style";
 import {StyledNavbar} from "./style/navbarstyle";
 import {Title} from "../title/Title";
 import { useState, useEffect } from "react";

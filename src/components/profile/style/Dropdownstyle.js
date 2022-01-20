@@ -14,7 +14,6 @@ export const ProfilePictureContainer = styled.img`
     margin-top: 3vh;
     height: 35vh;
     width: 35vw;
-    background-size: 400px; 
     background-repeat: no-repeat;
         @media (max-width: 500px) {
         height: 30vh;
