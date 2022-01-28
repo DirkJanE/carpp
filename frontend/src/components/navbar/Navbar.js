@@ -43,9 +43,9 @@ export const Navbar = (props) => {
             </Car>
           </RowContainer>
           <RowContainer style={{width: "28vw", justifyContent: "flex-end"}}>
-                    <Link names={names[0]} setcomponent={props.setmaps} opacity={mapsOpacity}/>
-                    <Link names={names[1]} setcomponent={props.setmessages} opacity={messageOpacity}/>
-                    <Link names={names[2]} setcomponent={props.setprofile} opacity={profileOpcatiy}/>
+                    <Link names={names[0]} url="maps" opacity={mapsOpacity}/>
+                    <Link names={names[1]} url="messages" opacity={messageOpacity}/>
+                    <Link names={names[2]} url="profile" opacity={profileOpcatiy}/>
           </RowContainer>
           <RowContainer style={{width: "2vw"}}></RowContainer>
       </StyledNavbar>

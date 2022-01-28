@@ -11,11 +11,11 @@ import {Loginsignupbuttons} from "../components/loginandsignup/sub/loginsignupbu
 import {Signupmessages} from "../components/loginandsignup/sub/messages/Signupmessages";
 import {Loginmessages} from "../components/loginandsignup/sub/messages/Loginmessages";
 
-
 export const LoginSignup = () => {
     const [loginFieldActive, setLoginFieldActive] = useState(true);
     const [signupNotClicked, setSignupNotClicked] = useState(true);
     const [loginNotClicked, setLoginNotClicked] = useState(true);
+
     const [noUsername, setNoUsername] = useState();
     const [tooShort, setTooShort] = useState();
     const [noPassword, setNoPassword] = useState();
@@ -48,7 +48,7 @@ export const LoginSignup = () => {
                     {loginFieldActive ?
                         <Login setnotclicked={setLoginNotClicked}/>
                         :
-                        <Signup setnotclicked={setSignupNotClicked} settooshort={setTooShort} setnousername={setNoUsername} setnopassword={setNoPassword} setnomatch={setNoMatch} setminreq={setMinReq} setnoselection={setNoSelection}/>
+                        <Signup setnotclicked={setSignupNotClicked} settooshort={setTooShort} tooshort={tooShort} setnousername={setNoUsername} nousername={noUsername} setnopassword={setNoPassword} nopassword={noPassword} setnomatch={setNoMatch} nomatch={noMatch} setminreq={setMinReq} minreq={minReq} setnoselection={setNoSelection} noselection={noSelection}/>
                     }
                 </LoginSignupContainer>
             <Car component={"LoginSignupPage"} image={carreverse}>

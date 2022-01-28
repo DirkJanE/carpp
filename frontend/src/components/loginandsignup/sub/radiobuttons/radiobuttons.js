@@ -23,13 +23,13 @@ export const Radiobuttons = (props) => {
             </ColumnContainer>
             <ColumnContainer>
                 <StyledInputForRadioButton    type="radio"
-                                              value="optionA"
-                                              checked={select === "optionA"}
+                                              value="rent"
+                                              checked={select === "rent"}
                                               onChange={event => handleChange(event)}>
                 </StyledInputForRadioButton>
                 <StyledInputForRadioButton  type="radio"
-                                            value="optionB"
-                                            checked={select === "optionB"}
+                                            value="rentout"
+                                            checked={select === "rentout"}
                                             onChange={event => handleChange(event)}>
                 </StyledInputForRadioButton>
             </ColumnContainer>

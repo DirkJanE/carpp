@@ -1,24 +1,18 @@
 import styled from "styled-components";
 
-export const StyledCar = styled.div`
-    height: 17vh;
+export const StyledCar = styled.img`
+    height: 20vh;
     width: 22vw;
-    background-size: 400px; 
-    background-repeat: no-repeat;
     @media (max-width: 500px) {
-        background-size: 200px;
-        width: 50vw;     
+        width: 70vw;     
     }
 `;
 
-export const StyledSmallCar = styled.div`
+export const StyledSmallCar = styled.img`
     height: 5vh;
-    width: 8vw;
-    background-size: 100px;
-    background-repeat: no-repeat;
+    width: 5vw;
     @media (max-width: 500px) {
         height: 5vh;
-        width: 15vw; 
-        background-size: 60px; 
+        width: 14vw; 
     }
 `;

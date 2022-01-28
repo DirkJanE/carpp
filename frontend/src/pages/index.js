@@ -1,9 +1,11 @@
 import {LoginSignup} from './LoginSignup';
-import {Main} from './Main';
-
-//import {Profile} from './Profile';
+import {Maps} from './Maps';
+import {Messages} from './Messages';
+import {Profile} from './Profile';
 
 export {
     LoginSignup,
-    Main
+    Maps,
+    Messages,
+    Profile
 }

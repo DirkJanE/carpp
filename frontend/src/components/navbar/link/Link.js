@@ -31,9 +31,13 @@ export const Link = (props) => {
 
     //console.log(props.opacity)
 
-    return (
+    const handleClick = (event) => {
+        event.preventDefault();
+        window.location.replace(`http://localhost:3000/${props.url}`)
+    }
 
-    <StyledNavbarLinks onClick={props.setcomponent}>
+    return (
+    <StyledNavbarLinks onClick={handleClick}>
         {props.names}
         <Line x1={x1} y1={y1} x2={x2} y2={y2} opacity={props.opacity}/>
     </StyledNavbarLinks>

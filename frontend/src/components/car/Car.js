@@ -4,11 +4,11 @@ export const Car = (props) => {
 
     if (props.component === "LoginSignupPage") {
         return (
-            <StyledCar style={{backgroundImage: `url(${props.image})`, justifyContent: "center"}}/>
+            <StyledCar src={props.image} style={{justifyContent: "center"}}/>
         );
     } else {
         return (
-            <StyledSmallCar style={{backgroundImage: `url(${props.image})`, justifyContent: "center"}}/>
+            <StyledSmallCar src={props.image} style={{justifyContent: "center"}}/>
         );
     }
 }
