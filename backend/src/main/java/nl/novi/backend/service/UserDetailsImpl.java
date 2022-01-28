@@ -25,10 +25,10 @@ public class UserDetailsImpl implements UserDetails {
 
     public static nl.novi.backend.service.UserDetailsImpl build(User user) {
 
-                user.getId();
+                user.getUserid();
                 user.getUsername();
                 user.getPassword();
-    return new nl.novi.backend.service.UserDetailsImpl(user.getId(), user.getUsername(), user.getPassword());
+    return new nl.novi.backend.service.UserDetailsImpl(user.getUserid(), user.getUsername(), user.getPassword());
     }
 
     public Long getId() {

@@ -1,43 +1,42 @@
 package nl.novi.backend.domain;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "messages")
+@Table(name = "message")
 public class Message {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private long id;
-
-    private long contactid;
-
+    private Long messageid;
+    private String contactid;
     private String message;
+
+    @ManyToOne
+    @JoinColumn(name = "userid", referencedColumnName = "id")
+    private User user;
 
     public Message () {
 
     }
 
-    public Message(long contactid, String message) {
+    public Message(String contactid, String message) {
         this.contactid = contactid;
         this.message = message;
     }
 
-    public long getId() {
-        return id;
+    public Long getMessageid() {
+        return messageid;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setMessageid(Long messageid) {
+        this.messageid = messageid;
     }
 
-    public long getContactId() {
+    public String getContactid() {
         return contactid;
     }
 
-    public void setContactId(long fromid) {
+    public void setContactid(String contactid) {
         this.contactid = contactid;
     }
 
@@ -49,4 +48,11 @@ public class Message {
         this.message = message;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

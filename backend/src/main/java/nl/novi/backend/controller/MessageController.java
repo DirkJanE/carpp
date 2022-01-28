@@ -1,29 +1,43 @@
 package nl.novi.backend.controller;
 
 import nl.novi.backend.domain.Message;
+import nl.novi.backend.payload.response.MessageResponse;
 import nl.novi.backend.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import java.net.URI;
+
+import java.util.Collection;
 
 @RestController
-@RequestMapping("/api/messages")
+@RequestMapping("/api/message")
 public class MessageController {
 
-    @Autowired
     MessageService messageService;
 
-    @PostMapping("/newmessage/{id}")
-    public ResponseEntity<Object> newMessage(@RequestBody Message message) {
+    @Autowired
+    public void MessageController(MessageService messageService) {
+        this.messageService = messageService;
+    }
 
-        long newMessage = messageService.createMessage(message);
+    @PutMapping("/addmessage")
+    public ResponseEntity<Object> addMessage(@RequestBody Message message) {
 
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-                .buildAndExpand(newMessage).toUri();
+        try {
+            long newMessage = messageService.createMessage(message);
+            return ResponseEntity.status(HttpStatus.OK).body(new MessageResponse("Message uploaded, id: " + newMessage));
 
-            return ResponseEntity.created(location).body(location);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new MessageResponse("Message not uploaded"));
         }
     }
+
+    @GetMapping("/getmessage/{userid}")
+    public Collection<Message> getMessage(@PathVariable Long userid) {
+
+        return messageService.getMessage(userid);
+    }
+
+}
 

@@ -13,6 +13,10 @@ public class SignupRequest {
     @Size(min = 6, max = 40)
     private String password;
 
+    @NotBlank
+    @Size(min = 4, max = 7)
+    private String userprofile;
+
     public String getUsername() {
         return username;
     }
@@ -29,4 +33,12 @@ public class SignupRequest {
         this.password = password;
     }
 
+
+    public String getUserprofile() {
+        return userprofile;
+    }
+
+    public void setUserprofile(String userprofile) {
+        this.userprofile = userprofile;
+    }
 }

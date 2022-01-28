@@ -56,7 +56,7 @@ public class AuthorizationService {
         }
 
         // Create new user's account
-        User user = new User(signUpRequest.getUsername(), encoder.encode(signUpRequest.getPassword()));
+        User user = new User(signUpRequest.getUsername(), encoder.encode(signUpRequest.getPassword()), signUpRequest.getUserprofile());
         userRepository.save(user);
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
