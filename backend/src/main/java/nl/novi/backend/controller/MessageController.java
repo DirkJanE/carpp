@@ -21,7 +21,7 @@ public class MessageController {
         this.messageService = messageService;
     }
 
-    @PutMapping("/addmessage")
+    @PutMapping("/add")
     public ResponseEntity<Object> addMessage(@RequestBody Message message) {
 
         try {
@@ -33,10 +33,10 @@ public class MessageController {
         }
     }
 
-    @GetMapping("/getmessage/{userid}")
-    public Collection<Message> getMessage(@PathVariable Long userid) {
+    @GetMapping("/getmessage/{userid}/{contactname}/{contactid}/{username}")
+    public Collection<Message> getMessage(@PathVariable Long userid, @PathVariable String contactname, @PathVariable Long contactid, @PathVariable String username) {
 
-        return messageService.getMessage(userid);
+        return messageService.getMessage(userid, contactname, contactid, username);
     }
 
 }

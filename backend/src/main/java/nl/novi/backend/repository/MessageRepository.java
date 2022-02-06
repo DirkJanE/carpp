@@ -10,7 +10,8 @@ import java.util.Collection;
 @Repository
 public interface MessageRepository extends JpaRepository<Message, Long> {
     @Query(
-            value = "SELECT * FROM MESSAGE u WHERE u.userid = ?1",
+            value = "SELECT * FROM MESSAGE m WHERE (m.userid = ?1 AND m.contactname= ?2) OR (m.userid = ?3 AND m.contactname = ?4)",
             nativeQuery = true)
-    Collection<Message> findAllMessages(Long userid);
-}
+            Collection<Message> findAllMessages(Long userid, String contactname, Long contactid, String username);
+
+        }

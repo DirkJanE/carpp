@@ -1,9 +1,13 @@
 package nl.novi.backend.payload.request;
 
+import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 public class SignupRequest {
+
+    @Id
+    private Long id;
 
     @NotBlank
     @Size(min = 3, max = 20)
@@ -16,6 +20,23 @@ public class SignupRequest {
     @NotBlank
     @Size(min = 4, max = 7)
     private String userprofile;
+
+    public SignupRequest() {
+    }
+
+    public SignupRequest(Long id, String username, String password, String userprofile) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.userprofile = userprofile;
+    }
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getUsername() {
         return username;

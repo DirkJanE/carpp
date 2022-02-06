@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
+import javax.transaction.Transactional;
 import java.util.Collection;
 
 @Service
@@ -19,16 +20,25 @@ public class ProfileService {
         this.profileRepository = profileRepository;
     }
 
-    public long createProfile(Profile profile) {
+    public long writeProfile(Profile profile) {
 
         Profile newProfile = profileRepository.save(profile);
 
         return newProfile.getProfileid();
     }
 
-    public Collection<Profile> getLocation() {
+    public Collection<Profile> getRentoutProfiles() {
 
-        return profileRepository.findAll();
+        String rentout = "rentout";
+
+        return profileRepository.findProfileRentout(rentout);
+    }
+
+    @Transactional
+    public void deleteProfile(Long id) {
+
+        profileRepository.deleteProfileByUserId(id);
+
     }
 }
 

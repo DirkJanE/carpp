@@ -1,7 +1,8 @@
 package nl.novi.backend.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -19,6 +20,7 @@ public class User {
 
     @NotBlank
     @Size(max = 25)
+    @Column(unique=true)
     private String username;
 
     @NotBlank
@@ -34,7 +36,7 @@ public class User {
     private Profile profile;
 
     @OneToMany(mappedBy = "user")
-    @JsonBackReference
+    @JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="userid")
     private List<Message> message;
 
     public User() {
@@ -93,6 +95,4 @@ public class User {
     public void setMessage(List<Message> message) {
         this.message = message;
     }
-
-
 }

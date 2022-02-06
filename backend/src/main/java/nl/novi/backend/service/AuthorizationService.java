@@ -18,6 +18,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @Validated
@@ -76,4 +78,13 @@ public class AuthorizationService {
                 userDetails.getId(),
                 userDetails.getUsername()));
     }
+
+    public Optional<User> getUser(String name) {
+        return userRepository.findByUsername(name);
+    }
+
+    public List getAllUsers () {
+        return userRepository.findAllUsers();
+    }
+
 }

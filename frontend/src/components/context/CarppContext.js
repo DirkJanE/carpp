@@ -3,9 +3,9 @@ import { useHistory } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import axios from 'axios';
 
-export const AuthContext = createContext({});
+export const CarppContext = createContext({});
 
-function AuthContextProvider({ children }) {
+function CarppContextProvider({ children }) {
     const history = useHistory();
     const [isAuth, toggleIsAuth] = useState({
         isAuth: false,
@@ -61,11 +61,12 @@ function AuthContextProvider({ children }) {
     async function fetchUserData(id, token, redirectUrl) {
         try {
             // haal gebruikersdata op met de token en id van de gebruiker
-            const result = await axios.get(`http://localhost:8080/api/profile/getlocation`, {
+            const result = await axios.get(`http://localhost:8080/api/profile/getprofilerentout`, {
                 headers: {
                     "Authorization": `Bearer ${token}`,
                 },
             })
+            console.log(result);
             // zet de gegevens in de state
             toggleIsAuth({
                 ...isAuth,
@@ -102,10 +103,10 @@ function AuthContextProvider({ children }) {
     };
 
     return (
-        <AuthContext.Provider value={contextData}>
+        <CarppContext.Provider value={contextData}>
             {isAuth.status === 'done' ? children : <p>Loading...</p>}
-        </AuthContext.Provider>
+        </CarppContext.Provider>
     );
 }
 
-export default AuthContextProvider;
+export default CarppContextProvider;

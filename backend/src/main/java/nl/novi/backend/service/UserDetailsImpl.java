@@ -35,7 +35,6 @@ public class UserDetailsImpl implements UserDetails {
         return id;
     }
 
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;

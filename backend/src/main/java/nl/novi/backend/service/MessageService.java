@@ -2,7 +2,6 @@ package nl.novi.backend.service;
 
 import nl.novi.backend.domain.Message;
 import nl.novi.backend.repository.MessageRepository;
-import nl.novi.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,13 +12,10 @@ public class MessageService {
 
     private MessageRepository messageRepository;
 
-    private UserRepository userRepository;
-
     @Autowired
-    public MessageService(MessageRepository messageRepository, UserRepository userRepository) {
+    public MessageService(MessageRepository messageRepository) {
         this.messageRepository = messageRepository;
-        this.userRepository = userRepository;
-    }
+     }
 
     public long createMessage(Message message) {
 
@@ -27,8 +23,8 @@ public class MessageService {
         return newMessage.getMessageid();
     }
 
-    public Collection<Message> getMessage(Long userid) {
-        return messageRepository.findAllMessages(userid);
+    public Collection<Message> getMessage(Long userid, String contactname, Long contactid, String username) {
+        return messageRepository.findAllMessages(userid, contactname, contactid, username);
     }
 }
 

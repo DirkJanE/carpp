@@ -1,5 +1,7 @@
 package nl.novi.backend.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,11 +9,13 @@ import javax.persistence.*;
 public class Message {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long messageid;
-    private String contactid;
+    private String contactname;
     private String message;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "userid", referencedColumnName = "id")
     private User user;
 
@@ -19,8 +23,8 @@ public class Message {
 
     }
 
-    public Message(String contactid, String message) {
-        this.contactid = contactid;
+    public Message(String contactname, String message) {
+        this.contactname = contactname;
         this.message = message;
     }
 
@@ -32,12 +36,12 @@ public class Message {
         this.messageid = messageid;
     }
 
-    public String getContactid() {
-        return contactid;
+    public String getContactname() {
+        return contactname;
     }
 
-    public void setContactid(String contactid) {
-        this.contactid = contactid;
+    public void setContactname(String contactname) {
+        this.contactname = contactname;
     }
 
     public String getMessage() {
@@ -48,11 +52,11 @@ public class Message {
         this.message = message;
     }
 
-    public User getUser() {
+    public User getUserid() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUserid(User user) {
         this.user = user;
     }
 }

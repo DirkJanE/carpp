@@ -9,23 +9,25 @@ import javax.persistence.Lob;
 public class Picture {
 
     @Id
+    @GeneratedValue
     private Long id;
 
     private String filename;
 
+    @Lob
+    private byte[] docFile;
+
     private Long userid;
-
-
 
 public Picture () {
 
 }
 
-public Picture (String filename, Long userid) {
+public Picture (Long id, String filename, byte[] docFile) {
+        this.id = id;
         this.filename = filename;
-        this.userid = userid;
+        this.docFile = docFile;
 }
-
 
     public Long getId() {
         return id;
@@ -43,13 +45,19 @@ public Picture (String filename, Long userid) {
         this.filename = filename;
     }
 
+    public byte[] getDocFile() {
+        return docFile;
+    }
 
-    public Long getUserId() {
+    public void setDocFile(byte[] docFile) {
+        this.docFile = docFile;
+    }
+
+    public Long getUserid() {
         return userid;
     }
 
-    public Long setUserId(Long userid) {
+    public void setUserid(Long userid) {
         this.userid = userid;
-        return userid;
     }
 }

@@ -29,4 +29,14 @@ public class AuthController {
     public ResponseEntity<MessageResponse> registerUser(@RequestBody SignupRequest signUpRequest) {
         return authorizationService.registerUser(signUpRequest);
     }
+
+    @GetMapping("/getuser/{name}")
+    public ResponseEntity<Object> getUser(@PathVariable String name) {
+        return ResponseEntity.ok().body(authorizationService.getUser(name));
+    }
+
+    @GetMapping("/getallusers")
+    public ResponseEntity<Object> getAllUsers() {
+        return ResponseEntity.ok().body(authorizationService.getAllUsers());
+    }
 }

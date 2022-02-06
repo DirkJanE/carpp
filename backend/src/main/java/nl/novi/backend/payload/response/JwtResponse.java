@@ -43,5 +43,4 @@ public class JwtResponse {
     public void setUsername(String username) {
         this.username = username;
     }
-
 }

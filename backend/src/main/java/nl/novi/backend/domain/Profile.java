@@ -13,9 +13,10 @@ public class Profile {
     private String searchprize;
     private String searchdistance;
     private String searchbrand;
-    private String latlon;
+    private String lat;
+    private String lon;
     private String brandtype;
-    private double rentprize;
+    private Double rentprize;
 
     @OneToOne
     @JsonBackReference
@@ -26,11 +27,12 @@ public class Profile {
 
     }
 
-    public Profile(String searchprize, String searchdistance, String searchbrand, String latlon, String brandtype, double rentprize) {
+    public Profile(String searchprize, String searchdistance, String searchbrand, String lat, String lon, String brandtype, Double rentprize) {
         this.searchprize = searchprize;
         this.searchdistance = searchdistance;
         this.searchbrand = searchbrand;
-        this.latlon = latlon;
+        this.lat = lat;
+        this.lon = lon;
         this.brandtype = brandtype;
         this.rentprize = rentprize;
     }
@@ -67,12 +69,20 @@ public class Profile {
         this.searchbrand = searchbrand;
     }
 
-    public String getLatlon() {
-        return latlon;
+    public String getLat() {
+        return lat;
     }
 
-    public void setLatlon(String latlon) {
-        this.latlon = latlon;
+    public void setLat(String lat) {
+        this.lat = lat;
+    }
+
+    public String getLon() {
+        return lon;
+    }
+
+    public void setLon(String lon) {
+        this.lon = lon;
     }
 
     public String getBrandtype() {
@@ -83,11 +93,11 @@ public class Profile {
         this.brandtype = brandtype;
     }
 
-    public double getRentprize() {
+    public Double getRentprize() {
         return rentprize;
     }
 
-    public void setRentprize(double rentprize) {
+    public void setRentprize(Double rentprize) {
         this.rentprize = rentprize;
     }
 
