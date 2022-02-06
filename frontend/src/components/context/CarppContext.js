@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, {createContext, useEffect, useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import axios from 'axios';
@@ -12,7 +12,7 @@ function CarppContextProvider({ children }) {
         user: null,
         status: 'pending',
     });
-
+    const [result, setResult] = useState({userdata: [{lat: "0", lon: "0", brandtype: "0"}]});
 
     // MOUNTING EFFECT
     useEffect(() => {
@@ -38,7 +38,7 @@ function CarppContextProvider({ children }) {
         localStorage.setItem('token', JWT);
         // decode de token zodat we de ID van de gebruiker hebben en data kunnen ophalen voor de context
         const decoded = jwt_decode(JWT);
-        console.log(JWT)
+        //console.log(decoded);
         // geef de ID, token en redirect-link mee aan de fetchUserData functie (staat hieronder)
         fetchUserData(decoded.sub, JWT, '/maps');
         // link de gebruiker door naar de profielpagina
@@ -61,13 +61,16 @@ function CarppContextProvider({ children }) {
     async function fetchUserData(id, token, redirectUrl) {
         try {
             // haal gebruikersdata op met de token en id van de gebruiker
-            const result = await axios.get(`http://localhost:8080/api/profile/getprofilerentout`, {
+            const result = await axios.get(`http://localhost:8080/api/profile/getrentout`, {
                 headers: {
                     "Authorization": `Bearer ${token}`,
                 },
             })
-            console.log(result);
             // zet de gegevens in de state
+            console.log(result.data.length)
+            if (result.data.length !== 1) {
+                setResult(result.data);
+            }
             toggleIsAuth({
                 ...isAuth,
                 isAuth: true,
@@ -98,6 +101,7 @@ function CarppContextProvider({ children }) {
     const contextData = {
         isAuth: isAuth.isAuth,
         user: isAuth.user,
+        userdata: result,
         login: login,
         logout: logout,
     };

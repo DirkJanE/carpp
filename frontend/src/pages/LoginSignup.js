@@ -48,7 +48,7 @@ export const LoginSignup = () => {
                     {loginFieldActive ?
                         <Login setnotclicked={setLoginNotClicked}/>
                         :
-                        <Signup setnotclicked={setSignupNotClicked} settooshort={setTooShort} tooshort={tooShort} setnousername={setNoUsername} nousername={noUsername} setnopassword={setNoPassword} nopassword={noPassword} setnomatch={setNoMatch} nomatch={noMatch} setminreq={setMinReq} minreq={minReq} setnoselection={setNoSelection} noselection={noSelection}/>
+                        <Signup setnotclicked={setSignupNotClicked} loginactive={handleClickLoginButton} settooshort={setTooShort} tooshort={tooShort} setnousername={setNoUsername} nousername={noUsername} setnopassword={setNoPassword} nopassword={noPassword} setnomatch={setNoMatch} nomatch={noMatch} setminreq={setMinReq} minreq={minReq} setnoselection={setNoSelection} noselection={noSelection}/>
                     }
                 </LoginSignupContainer>
             <Car component={"LoginSignupPage"} image={carreverse}>

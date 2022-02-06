@@ -7,6 +7,7 @@ export const Labelandinput = (props) => {
     const handleChange = (event) => {
         setValue(event.target.value);
         props.setvalue(event.target.value);
+        //console.log(event.target.value);
     }
 
     return (

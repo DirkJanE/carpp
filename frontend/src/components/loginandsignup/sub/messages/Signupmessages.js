@@ -4,11 +4,11 @@ import {useEffect, useState} from "react";
 
 export const Signupmessages = (props) => {
     const [opacity, setOpacity] = useState(0);
-    const nousername = "Vul een username in."
-    const tooshort = "Username is tekort."
-    const nopassword = "Vul een password in."
-    const nomatch = "Passwords komen niet overeen."
-    const minreq = "Password voldoet niet aan minimale vereisten."
+    const nousername = "Vul een gebruikersnaam in."
+    const tooshort = "Gebruikersnaam is tekort."
+    const nopassword = "Vul een wachtwoord in."
+    const nomatch = "Wachtwoorden komen niet overeen."
+    const minreq = "Wachtwoord voldoet niet aan minimale vereisten."
     const noselection = "Selecteer huren of verhuren."
 
     useEffect(() => {

@@ -11,14 +11,10 @@ export const Signup = (props) => {
     const [repeatPassword, setRepeatPassword] = useState("");
     const [selection, setSelection] = useState("");
 
-    const [error, toggleError] = useState("");
-    const [loading, toggleLoading] = useState("");
-
     const source = axios.CancelToken.source();
-    //const history = useHistory();
 
-    const handleClick = (event) => {
-        event.preventDefault();
+    useEffect(() => {
+        //event.preventDefault();
         props.setnotclicked(false);
 
         if (username.length === 0) {
@@ -62,50 +58,41 @@ export const Signup = (props) => {
         } else {
             props.setnoselection(false);
         }
-        console.log(props)
-        if (props.nousername === false && props.tooshort === false && props.nopassword === false && props.minreq === true && props.nomatch === false && props.noselection === false) {
-            console.log("test")
-            handleSubmit(event);
-        }
-    }
+    }, [username, password, repeatPassword, selection, props]);
 
     useEffect(() => {
         return function cleanup() {
             source.cancel();
         }
-    }, []);
+    }, );
 
-    async function handleSubmit(e) {
+    async function handleClick(e) {
         e.preventDefault();
-        toggleError(false);
-        toggleLoading(true);
 
         try {
-            await axios.post('http://localhost:8080/api/auth/signup', {
+            const result = await axios.post('http://localhost:8080/api/auth/signup', {
                 username: username,
                 password: password,
                 userprofile: selection,
             }, {
                 cancelToken: source.token,
             });
+            if (result.data.message === "User registered successfully!") {
+                props.loginactive();
+            }
 
-            // als alles goed gegaan is, linken we dyoor naar de login-pagina
-            //history.push('/signin');
-        } catch(error) {
+        } catch (error) {
             console.log(error.response);
-            toggleError(true);
         }
-
-        toggleLoading(false);
     }
 
     return (
         <StyledForm style={{flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
-            <Labelandinput type={"text"} label={"Choose your username:"} setvalue={setUsername}>
+            <Labelandinput type={"text"} label={"Kies een gebruikersnaam:"} setvalue={setUsername}>
             </Labelandinput>
-            <Labelandinput type={"password"} label={"Choose your password:"} setvalue={setPassword}>
+            <Labelandinput type={"password"} label={"Kies een wachtwoord:"} setvalue={setPassword}>
             </Labelandinput>
-            <Labelandinput type={"password"} label={"Repeat your password:"} setvalue={setRepeatPassword}>
+            <Labelandinput type={"password"} label={"Herhaal je wachtwoord:"} setvalue={setRepeatPassword}>
             </Labelandinput>
             <Radiobuttons setvalue={setSelection}>
             </Radiobuttons>

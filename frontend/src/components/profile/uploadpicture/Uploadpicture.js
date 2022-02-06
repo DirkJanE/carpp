@@ -1,64 +1,53 @@
-import {ProfilePictureContainer} from "../style/Dropdownstyle";
+import {ProfilePictureContainer, StyledForm} from "../style/Dropdownstyle";
 import {ColumnContainer, RowContainer, StyledInput} from "../../../style/Style";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {deletePicture, uploadPicture} from "../../apirequest/Apirequest";
 
-export const Uploadpicture = () => {
+export const Uploadpicture = (props) => {
     const [image, setImage] = useState({preview: "", raw: ""});
-    const [image1, setImage1] = useState({preview: "", raw: ""});
+        const [result, setResult] = useState();
 
-    const handleChange = e => {
+    const handleChange = (e) => {
+        e.preventDefault();
         if (e.target.files.length) {
             setImage({
                 preview: URL.createObjectURL(e.target.files[0]),
                 raw: e.target.files[0]
             });
-            setImage1({
-                preview: URL.createObjectURL(e.target.files[1]),
-                raw: e.target.files[1]
-            });
         }
     };
 
-    const handleUpload = async e => {
-        e.preventDefault();
+    useEffect(() => {
         const formData = new FormData();
-        formData.append("image", image.raw);
-
-        await fetch("YOUR_URL", {
-            method: "POST",
-            headers: {
-                "Content-Type": "multipart/form-data"
-            },
-            body: formData
-        });
-    };
+        if (image.preview.length) {
+            formData.append("file", image.raw);
+            deletePicture(props.userid, props.token, setResult)
+            if (result === 200) {
+                uploadPicture(props.userid, props.token, formData)
+            }
+        }
+    }, [image, props, result]);
 
         return (
-            <ColumnContainer>
+            <ColumnContainer style={{alignItems: "flex-start"}}>
                 <RowContainer style={{width: "70vw", justifyContent: "flex-start"}}>
                 {image.preview ?
-                    <ProfilePictureContainer style={{maxHeight: "35vh", maxWidth: "35vh", borderRadius: "10px"}}
+                    <ProfilePictureContainer style={{maxHeight: "35vh", width: "auto", borderRadius: "10px"}}
                                              src={image.preview}
                                              alt="dummy"
                     />
                     :
                     <ProfilePictureContainer/>
                 }
-                {image1.preview ?
-                    <ProfilePictureContainer style={{maxHeight: "35vh", maxWidth: "35vh", borderRadius: "10px"}}
-                                             src={image1.preview}
-                                             alt="dummy"
-                    />
-                    :
-                    <ProfilePictureContainer/>
-                }
                 </RowContainer>
-                <StyledInput onChange={handleChange}
-                             style={{width: "19vw", height: "8vh", marginTop: "1vh", marginLeft: "7vw"}}
-                             type="file"
-                             multiple accept="image/*">
+                <StyledForm method="POST" encType="multipart/form-data" action="/">
+                    <StyledInput onChange={handleChange}
+                                 style={{width: "19vw", height: "8vh", marginTop: "1vh", marginLeft: "6vw"}}
+                                 type="file"
+                                 multiple accept="image/*">
 
-                </StyledInput>
+                    </StyledInput>
+                </StyledForm>
             </ColumnContainer>
 
         );

@@ -1,4 +1,4 @@
-import { StyledDropdownLabel, StyledDropdownOption, StyledDropdownSelector } from "../../style/dropdownstyle";
+import { StyledDropdownLabel, StyledDropdownOption, StyledDropdownSelector } from "../../style/Bingmapsstyle";
 import {useState} from "react/cjs/react.development";
 import {RowContainer} from "../../../../style/Style";
 

@@ -1,6 +1,6 @@
 import {StyledForm, StyledButton} from "../../../style/Style";
 import {Labelandinput} from "../sub/labelandinput/Labelandinput";
-import { AuthContext } from '../../context/AuthContext';
+import { CarppContext } from '../../context/CarppContext';
 import {useContext, useEffect, useState} from "react";
 import axios from "axios";
 
@@ -8,17 +8,20 @@ export const Login = (props) => {
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
     const source = axios.CancelToken.source();
-    const { login } = useContext(AuthContext);
+    const { login } = useContext(CarppContext);
 
     useEffect(() => {
         return function cleanup() {
             source.cancel();
         }
-    }, []);
+    }, );
+
+    useEffect(() => {
+        props.setnotclicked(false);
+    }, );
 
     const handleClick = async (event) => {
         event.preventDefault();
-        props.setnotclicked(false);
 
         try {
             const result = await axios.post('http://localhost:8080/api/auth/signin', {
@@ -27,7 +30,7 @@ export const Login = (props) => {
             }, {
                 cancelToken: source.token,
             });
-            console.log(result.data);
+            //console.log(result.data);
             login(result.data.accessToken);
 
         } catch(e) {
@@ -37,9 +40,9 @@ export const Login = (props) => {
 
     return (
         <StyledForm style={{flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
-            <Labelandinput type={"text"} label={"Username:"} setvalue={setUsername}>
+            <Labelandinput type={"text"} label={"Gebruikersnaam:"} setvalue={setUsername}>
             </Labelandinput>
-            <Labelandinput type={"password"} label={"Password:"} setvalue={setPassword}>
+            <Labelandinput type={"password"} label={"Wachtwoord:"} setvalue={setPassword}>
             </Labelandinput>
             <StyledButton onClick={handleClick} >
                 Login

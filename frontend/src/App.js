@@ -2,11 +2,11 @@ import React, {useContext} from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom';
 import {LoginSignup, Maps, Messages, Profile} from './pages';
 import './App.css';
-import {AuthContext} from './components/context/AuthContext';
+import {CarppContext} from './components/context/CarppContext';
 
 function App() {
 
-    const { isAuth } = useContext(AuthContext);
+    const { isAuth } = useContext(CarppContext);
 
   return (
          <Switch>

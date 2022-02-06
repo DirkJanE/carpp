@@ -1,19 +1,25 @@
-import {ColumnContainer, RowContainer, StyledText} from "../../style/Style";
+import {ColumnContainer, RowContainer} from "../../style/Style";
 import {Profilelabelandinput} from "./profilelabelandinput/Profilelabelandinput";
 import {useEffect, useState} from "react";
-import {Geodatarequest, RDWrequest} from "../apirequest/Apirequest";
+import {deleteRequest, Geodatarequest, RDWrequest, writeProfile} from "../apirequest/Apirequest";
 import {BingMapsContainer} from "../bingmaps/style/Bingmapsstyle";
-import {ProfileRowContainer, StyledDropdownButton} from "./style/Dropdownstyle";
+import {ProfileRowContainer} from "./style/Dropdownstyle";
 import {Uploadpicture} from "./uploadpicture/Uploadpicture";
+import {TextContainer} from "../text/TextContainer";
 
-export const Rentout = () => {
+export const Rentout = (props) => {
+    const token = props.token;
+    const searchdistance = "0";
+    const searchbrand = "0";
+    const searchprize = "0";
     const [postalcode, setPostalCode] = useState("");
+    const [lat, setLat] = useState();
+    const [lon, setLon] = useState();
     const [location, setLocation] = useState();
-    const [coordinates, setCoordinates] = useState();
-
     const [price, setPrice]= useState("");
     const [licensePlate, setLicensePlate]= useState("");
     const [brandType, setBrandType]= useState("");
+    const [result, setResult] = useState();
     const [error, setError] = useState();
 
     const [number, setNumber] = useState(0);
@@ -23,9 +29,9 @@ export const Rentout = () => {
 
     useEffect(() => {
         if (postalcode.length === 6) {
-            Geodatarequest(urlgeodata, setCoordinates, setLocation, setError)
+            Geodatarequest(urlgeodata, setLocation, setLat, setLon, setError)
         }
-    }, [postalcode, urlgeodata, coordinates, location, error]);
+    }, [postalcode, urlgeodata, location, lat, lon, error]);
 
     useEffect(() => {
         if (licensePlate.length === 6 && number === 0) {
@@ -34,13 +40,26 @@ export const Rentout = () => {
         }
     }, [urlRDW, licensePlate, error, number]);
 
-    console.log(brandType)
+    useEffect(() => {
+        console.log(lat, lon, brandType, price)
 
+        if (lat && lon && brandType && price) {
+            deleteRequest(props.token, props.userid, setResult);
+            if (result === 200) {
+                writeProfile(props.token, props.userid, searchdistance, searchbrand, searchprize, lat, lon, brandType, price);
+            }
+        }
+
+    }, [lat, lon, brandType, price, props, result]);
+
+    /*
+    function handleClick() {
+        putRequest(props.token, props.userid, searchdistance, searchbrand, searchprize, lat, lon, brandType, price)
+    }
+*/
     return (
         <ColumnContainer>
-            <StyledText style={{height: "3vh", width: "76vw", backgroundColor: "#cb6939"}}>
-                Jouw instellingen als verhuurder.
-            </StyledText>
+            <TextContainer text={"Jouw instellingen als verhuurder."}/>
             <BingMapsContainer style={{flexDirection: "column", alignItems: "center", justifyContent: "center", height: "70vh", marginTop: "0.5vh", backgroundColor: "#cb6939", borderRadius: 10}}>
                 <ColumnContainer style={{flexDirection: "column", alignItems: "flex-start", justifyContent: "flex-start", height: "66vh", width: "72vw"}}>
                     <ProfileRowContainer>
@@ -56,12 +75,7 @@ export const Rentout = () => {
                             {brandType}
                         </RowContainer>
                     </ProfileRowContainer>
-                        <Uploadpicture/>
-                    <RowContainer style={{width: "72vw", height: "10vh", alignItems: "flex-end", justifyContent: "flex-end"}}>
-                        <StyledDropdownButton>
-                            Opslaan
-                        </StyledDropdownButton>
-                    </RowContainer>
+                        <Uploadpicture userid={props.userid} token={token}/>
                 </ColumnContainer>
             </BingMapsContainer>
         </ColumnContainer>

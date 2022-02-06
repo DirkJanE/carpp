@@ -7,10 +7,10 @@ export const BingMaps = () => {
     const [height, setHeight] = useState();
     const [width, setWidth] = useState();
     const [pushPins, setPushPins] = useState();
-    console.log(result)
+
     //fill the pushpins array with coordinates from result in CarppContext
     useEffect(() => {
-
+        //console.log(result)
         let tempArray = [];
         let pushPin = {
             center: {
@@ -19,7 +19,6 @@ export const BingMaps = () => {
             },
             options: {
                 title: "",
-                subtitle: "",
             },
         }
 
@@ -31,38 +30,36 @@ export const BingMaps = () => {
                 },
                 options: {
                     title: "Merk & Type: " + result.userdata[i].brandtype,
-                    subtitle: "Huurprijs: € " + result.userdata[i].rentprize,
                 },
             }
             tempArray[i] = pushPin;
         }
-        //console.log(tempArray);
-    setPushPins(tempArray);
+        //console.log(tempArray)
+        setPushPins(tempArray);
 
     }, [result]);
 
-    //adjust size when using mobile
-    useEffect(() => {
-        if (window.innerWidth <= 500) {
-            setHeight("55vh");
-            setWidth("69vw");
-        } else {
-            setHeight("63vh");
-            setWidth("58vw");
-        }
-    }, []);
+        //adjust size when using mobile
+        useEffect(() => {
+            if (window.innerWidth <= 500) {
+                setHeight("55vh");
+                setWidth("40vw");
+            } else {
+                setHeight("63vh");
+                setWidth("58vw");
+            }
+        }, []);
 
-
-    return (
+        return (
             <BingMapsReact
-                           bingMapsKey="AludF50Iyu_3Cg-lglA9RgtbipGbKneiDHYb0pmq23Te9qjlw4jExVCeUAGfkops"
-                           height={height}
-                           width={width}
-                           pushPins={pushPins}
-                           viewOptions={{
-                               center: {latitude: 52.2289, longitude: 5.1655},
-                               zoom: 13
-                           }}
-                           />
-    )
-}
+                bingMapsKey=""
+                height={height}
+                width={width}
+                pushPins={pushPins}
+                viewOptions={{
+                    center: {latitude: 52.2289, longitude: 5.1655},
+                    zoom: 13
+                }}
+            />
+        )
+    }

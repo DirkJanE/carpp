@@ -16,7 +16,7 @@ export const Loginmessages = (props) => {
 
     return (
         <LoginSignupContainer style={{height: "11.5vh", marginTop: "2vh", opacity: opacity}}>
-            Foute login.
+            Username en/of wachtwoord incorrect!
         </LoginSignupContainer>
     )
 }

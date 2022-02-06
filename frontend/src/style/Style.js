@@ -108,8 +108,3 @@ export const StyledForm = styled.form`
         margin-top: 1vh;
     }
 `;
-
-export const StyledMessage = styled.h4`
-    display: flex;
-    flex-direction: column;
-`;

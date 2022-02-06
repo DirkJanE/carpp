@@ -103,4 +103,7 @@ export const StyledDropdownButton = styled.button`
     }
 `;
 
+export const StyledForm = styled.form`
+    height: 7vh;
+`;
 

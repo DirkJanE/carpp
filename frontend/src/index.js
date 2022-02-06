@@ -3,15 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import AuthContextProvider from "./components/context/AuthContext";
+import CarppContextProvider from "./components/context/CarppContext";
 import {BrowserRouter} from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
       <BrowserRouter>
-          <AuthContextProvider>
+          <CarppContextProvider>
             <App />
-          </AuthContextProvider>
+          </CarppContextProvider>
       </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
