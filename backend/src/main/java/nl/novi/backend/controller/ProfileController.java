@@ -31,12 +31,12 @@ public class ProfileController {
         }
     }
 
-    @GetMapping("/getrentout")
+    @GetMapping("/readrentout")
     public ResponseEntity<Object> getProfileRentout() {
         return ResponseEntity.ok().body(profileService.getRentoutProfiles());
     }
 
-    @DeleteMapping("/delete/{userid}")
+    @DeleteMapping("/remove/{userid}")
     public ResponseEntity<Object> deleteProfile(@PathVariable Long userid) {
         profileService.deleteProfile(userid);
         return ResponseEntity.ok().body("Profile deleted.");

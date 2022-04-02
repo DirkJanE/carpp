@@ -25,17 +25,18 @@ public class TestProfileRepository {
     @Test
     void testFindProfileRentOut() {
         // given
-        Profile profile = new Profile();
+        Profile profile = new Profile("0", "0", "20", "52.000", "5.0000", "Volkswagen Polo", 75.00);
         entityManager.persist(profile);
         entityManager.flush();
 
+
         // when
-        Profile found = (Profile) profileRepository.findProfileRentout("rentout");
+        Profile found = (Profile) profileRepository.findProfileRentout("1");
+
 
         // then
-        int expected = 1;
-        Long actual = found.getProfileid();
-
+        String expected = "0";
+        String actual = found.getSearchprize();
         assertEquals(expected, actual);
     }
 }

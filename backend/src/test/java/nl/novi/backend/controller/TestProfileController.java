@@ -34,18 +34,19 @@ public class TestProfileController {
     private ProfileService profileService;
 
     @Test
-    public void testGetProfileRentOut() throws Exception {
-/*
-        Profile profile = new Profile();
-        List<Profile> rentOutProfiles = Arrays.asList(profile);
+    public void testWriteProfile() throws Exception {
 
-        given(profileService.getRentoutProfiles()).willReturn(rentOutProfiles);
+        Profile profile = new Profile("0", "0", "20", "52.000", "5.0000", "Volkswagen Polo", 75.00);
 
-        mvc.perform(get("/getrentout")
+        List<Profile> rentoutProfiles = Arrays.asList(profile);
+
+        given(profileService.getRentoutProfiles()).willReturn(rentoutProfiles);
+
+        mvc.perform(get("/readrentout")
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].profileid", is(profile.getProfileid())));
-*/
+                        .andExpect(status().isOk())
+                        .andExpect(jsonPath("$", hasSize(7)))
+                        .andExpect(jsonPath("$[0].searchprize", is("0")));
+
     }
 }

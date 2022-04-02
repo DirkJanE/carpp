@@ -29,13 +29,12 @@ public class MessageController {
             return ResponseEntity.status(HttpStatus.OK).body(new MessageResponse("Message uploaded, id: " + newMessage));
 
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new MessageResponse("Message not uploaded"));
+            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new MessageResponse("Message not uploaded."));
         }
     }
 
-    @GetMapping("/getmessage/{userid}/{contactname}/{contactid}/{username}")
+    @GetMapping("/read/{userid}/{contactname}/{contactid}/{username}")
     public Collection<Message> getMessage(@PathVariable Long userid, @PathVariable String contactname, @PathVariable Long contactid, @PathVariable String username) {
-
         return messageService.getMessage(userid, contactname, contactid, username);
     }
 

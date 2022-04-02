@@ -1,6 +1,6 @@
 --Eerste keer starten met onderstaande als comment. Tweede keer starten met uncomment als er behoefte is aan testdata.
 
-
+/*
 --rent out users
 INSERT INTO app_user(username, password, userprofile) VALUES ('Mark', '$2a$10$/aM8vfWJjgvK3pkBmyFmI.THgD4ILtUkSeQ8C.edBsXCFJ0CuzC22', 'rentout'); --Password1!
 INSERT INTO app_user(username, password, userprofile) VALUES ('Eva', '$2a$10$/aM8vfWJjgvK3pkBmyFmI.THgD4ILtUkSeQ8C.edBsXCFJ0CuzC22', 'rentout'); --Password1!
@@ -32,6 +32,4 @@ INSERT INTO message(messageid, contactname, message, userid) VALUES ('3', 'Mark'
 INSERT INTO message(messageid, contactname, message, userid) VALUES ('4', 'Gert', 'Ja, dat kan', '1');
 INSERT INTO message(messageid, contactname, message, userid) VALUES ('5', 'Eva', 'Hallo Eva', '5');
 INSERT INTO message(messageid, contactname, message, userid) VALUES ('6', 'Gert', 'Hallo Gert', '2');
-
-
-
+*/
