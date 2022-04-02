@@ -26,6 +26,7 @@ export const Rentout = (props) => {
 
     const urlgeodata = `https://geodata.nationaalgeoregister.nl/locatieserver/v3/free?q="${postalcode}" and type:postcode`;
     const urlRDW = `https://opendata.rdw.nl/resource/m9d7-ebf2.json?kenteken=${licensePlate}`;
+    const urlDeleteProfile = `http://localhost:8080/api/profile/remove/${props.userid}`;
 
     useEffect(() => {
         if (postalcode.length === 6) {
@@ -41,22 +42,17 @@ export const Rentout = (props) => {
     }, [urlRDW, licensePlate, error, number]);
 
     useEffect(() => {
-        console.log(lat, lon, brandType, price)
+        //console.log(lat, lon, brandType, price)
 
         if (lat && lon && brandType && price) {
-            deleteRequest(props.token, props.userid, setResult);
+            deleteRequest(urlDeleteProfile, props.token, setResult);
             if (result === 200) {
                 writeProfile(props.token, props.userid, searchdistance, searchbrand, searchprize, lat, lon, brandType, price);
             }
         }
 
-    }, [lat, lon, brandType, price, props, result]);
+    }, [lat, lon, brandType, price, props, result, urlDeleteProfile]);
 
-    /*
-    function handleClick() {
-        putRequest(props.token, props.userid, searchdistance, searchbrand, searchprize, lat, lon, brandType, price)
-    }
-*/
     return (
         <ColumnContainer>
             <TextContainer text={"Jouw instellingen als verhuurder."}/>

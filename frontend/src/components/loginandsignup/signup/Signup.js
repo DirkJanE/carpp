@@ -2,7 +2,7 @@ import {StyledForm, StyledButton} from "../../../style/Style";
 import {Labelandinput} from "../sub/labelandinput/Labelandinput";
 import { Radiobuttons } from "../sub/radiobuttons/radiobuttons";
 import {useEffect, useState} from "react";
-import {Regexcheck} from "../sub/regexcheck/Regexcheck";
+import {CheckSignup} from "../functions/Check"
 import axios from "axios";
 
 export const Signup = (props) => {
@@ -14,50 +14,7 @@ export const Signup = (props) => {
     const source = axios.CancelToken.source();
 
     useEffect(() => {
-        //event.preventDefault();
-        props.setnotclicked(false);
-
-        if (username.length === 0) {
-            props.setnousername(true);
-
-        } else if (username.length > 0 && username.length < 4) {
-            props.settooshort(true);
-
-        } else {
-            props.settooshort(false);
-            props.setnousername(false);
-        }
-
-        if (password.length === 0) {
-            props.setnopassword(true);
-
-        } else if (password.length > 0) {
-            props.setnopassword(false);
-            const validpassword = Regexcheck(password);
-
-            if (validpassword === true) {
-                props.setminreq(true);
-
-            } else {
-                props.setminreq(false);
-            }
-
-        } else {
-            props.setnopassword(true);
-            props.setminreq(false);
-        }
-
-        if (password !== repeatPassword) {
-            props.setnomatch(true);
-        } else {
-            props.setnomatch(false);
-        }
-
-        if (selection.length === 0) {
-            props.setnoselection(true);
-        } else {
-            props.setnoselection(false);
-        }
+        CheckSignup(username, password, repeatPassword, selection, props);
     }, [username, password, repeatPassword, selection, props]);
 
     useEffect(() => {

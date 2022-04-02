@@ -41,8 +41,6 @@ function CarppContextProvider({ children }) {
         //console.log(decoded);
         // geef de ID, token en redirect-link mee aan de fetchUserData functie (staat hieronder)
         fetchUserData(decoded.sub, JWT, '/maps');
-        // link de gebruiker door naar de profielpagina
-        // history.push('/profile');
     }
 
     function logout() {
@@ -61,14 +59,14 @@ function CarppContextProvider({ children }) {
     async function fetchUserData(id, token, redirectUrl) {
         try {
             // haal gebruikersdata op met de token en id van de gebruiker
-            const result = await axios.get(`http://localhost:8080/api/profile/getrentout`, {
+            const result = await axios.get(`http://localhost:8080/api/profile/readrentout`, {
                 headers: {
                     "Authorization": `Bearer ${token}`,
                 },
             })
             // zet de gegevens in de state
-            console.log(result.data.length)
-            if (result.data.length !== 1) {
+            console.log(result)
+            if (result.data.length !== 0) {
                 setResult(result.data);
             }
             toggleIsAuth({
@@ -81,7 +79,7 @@ function CarppContextProvider({ children }) {
                 status: 'done',
             });
 
-            // als er een redirect URL is meegegeven (bij het mount-effect doen we dit niet) linken we hiernnaartoe door
+            // als er een redirect URL is meegegeven (bij het mount-effect doen we dit niet) linken we hiernaartoe door
             // als we de history.push in de login-functie zouden zetten, linken we al door voor de gebuiker is opgehaald!
             if (redirectUrl) {
                 history.push(redirectUrl);

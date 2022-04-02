@@ -52,7 +52,7 @@ export const BingMaps = () => {
 
         return (
             <BingMapsReact
-                bingMapsKey=""
+                bingMapsKey="AludF50Iyu_3Cg-lglA9RgtbipGbKneiDHYb0pmq23Te9qjlw4jExVCeUAGfkops"
                 height={height}
                 width={width}
                 pushPins={pushPins}

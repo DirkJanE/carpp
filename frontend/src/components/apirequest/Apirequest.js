@@ -52,26 +52,13 @@ export async function writeProfile(token, userid, searchdistance, searchbrand, s
             }
         }
 
-export async function deleteRequest(token, userid, setResult) {
-    try {
-        const result = await axios.delete(`http://localhost:8080/api/profile/delete/${userid}`,
-            { headers: {
-                    "Authorization": `Bearer ${token}`
-                },
-            })
-            setResult(result.status);
-    } catch (e) {
-        console.error(e);
-    }
-}
-
-export const uploadPicture = async (id, token, formData) => {
+export const uploadRequest = async (id, token, formData) => {
     let req = new XMLHttpRequest();
     try {
         req.open('POST', `http://localhost:8080/api/picture/upload/${id}`, true);
         req.setRequestHeader('Authorization', 'Bearer ' + token);
         req.send(formData);
-        console.log(req)
+        //console.log(req)
     } catch (err) {
 
         if (err.response.status) {
@@ -80,15 +67,15 @@ export const uploadPicture = async (id, token, formData) => {
     }
 }
 
-export async function deletePicture(userid, token, setResult) {
+export async function deleteRequest(url, token, setResult) {
     try {
-        const result = await axios.delete(`http://localhost:8080/api/picture/delete/${userid}`,
+        const result = await axios.delete(`${url}`,
             { headers: {
                     "Authorization": `Bearer ${token}`
                 },
             })
         setResult(result.status);
-        console.log(result);
+        console.log(result)
     } catch (e) {
         console.error(e);
     }
@@ -110,5 +97,19 @@ export async function addMessage(token, messageToUser, message, userid, setResul
             console.log(typeof(userid));
         } catch (e) {
             console.error(e);
+    }
+}
+
+export async function getMessages(messageToUser, trigger, messageToUserId, token, userId, username, setResult) {
+    try {
+        const result = await axios.get(`http://localhost:8080/api/message/read/${userId}/${messageToUser}/${messageToUserId}/${username}`, {
+            headers: {
+                "Authorization": `Bearer ${token}`,
+            },
+        })
+        setResult(result.data);
+        //console.log(result);
+    } catch (e) {
+        console.log(e);
     }
 }

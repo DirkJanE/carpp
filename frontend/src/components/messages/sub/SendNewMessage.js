@@ -4,7 +4,7 @@ import {addMessage} from "../../apirequest/Apirequest";
 import {useState} from "react";
 
 export const SendNewMessage = (props) => {
-    const [setResult] = useState();
+    const [result, setResult] = useState();
     const [message, setMessage] = useState();
 
     //console.log(message);
@@ -18,7 +18,7 @@ export const SendNewMessage = (props) => {
     return (
         <RowContainer>
             <NewMessage message={message} setmessage={setMessage} settrigger={props.settrigger}/>
-            <StyledButton style={{height: "4.5vh", width: "13.5vw", marginTop: "2.3vh", marginLeft: "1vw"}} onClick={handleClick}>
+            <StyledButton style={{height: "4.5vh", width: "13.5vw", marginTop: "2vh", marginLeft: "1vw"}} onClick={handleClick}>
                 Verzend
             </StyledButton>
         </RowContainer>

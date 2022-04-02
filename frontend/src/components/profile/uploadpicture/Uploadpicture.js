@@ -1,11 +1,12 @@
 import {ProfilePictureContainer, StyledForm} from "../style/Dropdownstyle";
 import {ColumnContainer, RowContainer, StyledInput} from "../../../style/Style";
 import {useEffect, useState} from "react";
-import {deletePicture, uploadPicture} from "../../apirequest/Apirequest";
+import {deleteRequest, uploadRequest} from "../../apirequest/Apirequest";
 
 export const Uploadpicture = (props) => {
     const [image, setImage] = useState({preview: "", raw: ""});
-        const [result, setResult] = useState();
+    const [result, setResult] = useState();
+    const urlDeletePicture = `http://localhost:8080/api/picture/remove/${props.userid}`;
 
     const handleChange = (e) => {
         e.preventDefault();
@@ -21,9 +22,9 @@ export const Uploadpicture = (props) => {
         const formData = new FormData();
         if (image.preview.length) {
             formData.append("file", image.raw);
-            deletePicture(props.userid, props.token, setResult)
+            deleteRequest(urlDeletePicture, props.token, setResult)
             if (result === 200) {
-                uploadPicture(props.userid, props.token, formData)
+                uploadRequest(props.userid, props.token, formData)
             }
         }
     }, [image, props, result]);
